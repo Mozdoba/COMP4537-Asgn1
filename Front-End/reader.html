@@ -4,22 +4,19 @@
 <title>COMP4537 Assignment 1 - BRONZE</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/admin.css">
-<script src="js/admin.js"></script>
-
-<body onload="">
- <h1 class="text-center">Quotes</h1>
- <div class="text-center" id="root"></div>
-
-<br>
-
+<link rel="stylesheet" href="./css/reader.css">
+<script src="./js/reader.js"></script>
+<body>
 <div class="text-center">
-  <a class="active btn btn-success btn-lg" href="./admin.html" onclick="">Add New Quote</a>
+    <h1>Quotes</h1>
+    <a class="active btn btn-success" onclick="loadQuotes(true)">All Quotes</a>
+    <a class="active btn btn-info" onclick="loadQuotes(false)">Recent Quote</a>
 </div>
-
+<div id="quotes-root">
+</div>
+<br>
 <div class="text-center">
   <a class="active btn btn-info btn-lg" href="./index.html" onclick="">Back</a>
 </div>
-
 </body>
 </html>
