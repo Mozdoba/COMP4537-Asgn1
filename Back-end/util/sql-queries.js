@@ -1,5 +1,5 @@
-import mysql from "mysql";
-import formatResult from "./format-result";
+const mysql = require("mysql");
+const formatResult = require("./format-result");
 
 const remoteDB = {
   host: "localhost",
@@ -23,7 +23,7 @@ const db = mysql.createPool({
   connectionLimit : 5,
 });
 
-export const deleteRowFromTable = (id) => {
+const deleteRowFromTable = (id) => {
   const query = `DELETE FROM QUOTES WHERE ID = ${id}`
   db.query(query, (err, res) => {
       if (err) throw err;
@@ -31,7 +31,7 @@ export const deleteRowFromTable = (id) => {
   });
 }
 
-export const insert = ({ quote, author }) => {
+const insert = ({ quote, author }) => {
   const query = `INSERT INTO QUOTES(QUOTE, AUTHOR) values ('${quote}', '${author}')`;
   db.query(query, (err, res) => {
       if(err) throw err;
@@ -39,7 +39,7 @@ export const insert = ({ quote, author }) => {
   });
 }
 
-export const selectAll = ({ res, isAdmin }) => {
+const selectAll = ({ res, isAdmin }) => {
   const query = "SELECT * FROM QUOTES";
   db.query(query, (err, result) => {
     if (err) {
@@ -57,7 +57,7 @@ export const selectAll = ({ res, isAdmin }) => {
   });
 }
 
-export const selectLastRow = ({ res, isGetRequest }) => {
+const selectLastRow = ({ res, isGetRequest }) => {
   const query = `SELECT * FROM QUOTES ORDER BY ID DESC LIMIT 1`;
   db.query(query, (err, result) => {
     if (err) {
@@ -74,10 +74,18 @@ export const selectLastRow = ({ res, isGetRequest }) => {
   });
 }
 
-export const update = ({ id, quote, author }) => {
+const update = ({ id, quote, author }) => {
   const query = `UPDATE QUOTES SET QUOTE = "${quote}", AUTHOR = "${author}" WHERE ID = ${id}`;
   db.query(query, (err, res) => {
       if(err) throw err;
       console.log(res);
   });
+}
+
+module.exports = {
+  deleteRowFromTable,
+  insert,
+  update,
+  selectAll,
+  selectLastRow,
 }

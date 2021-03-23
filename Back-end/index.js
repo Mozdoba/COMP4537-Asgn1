@@ -1,20 +1,21 @@
-import express from "express";
+const express = require("express");
+const sqlQueries = require("./util/sql-queries");
 
-import {
+const {
   deleteRowFromTable,
   insert,
   update,
   selectAll,
   selectLastRow,
-} from "./util/sql-queries";
+} = sqlQueries;
 
 const app = express();
-const endPointRoot = "/assignment1/v1/quotes";
+const endPointRoot = "/COMP4537/assignment1/v1/quotes";
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("Front-end"));
+app.use(express.static("Front-End"));
 app.use("/css", express.static(__dirname + "/css"));
 app.use("/js", express.static(__dirname + "/js"));
 
@@ -77,4 +78,5 @@ app.put(endPointRoot, (req, res) => {
 
 app.listen(port, () => {
     console.log("Connected! Waiting for request on port", port);
+    console.log(__dirname);
 });

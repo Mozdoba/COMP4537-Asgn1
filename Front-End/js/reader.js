@@ -1,4 +1,4 @@
-const endPointRoot = "/assignment1/v1/quotes";
+const endPointRoot = "COMP4537/assignment1/v1/quotes";
 const GET = 'GET';
 const xhttp = new XMLHttpRequest();
 

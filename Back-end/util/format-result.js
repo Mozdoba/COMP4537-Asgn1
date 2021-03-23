@@ -11,4 +11,4 @@ const formatResult = (result) => {
     return formattedResult;
 }
 
-export default formatResult;
+module.exports = formatResult;
