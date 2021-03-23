@@ -2,4 +2,4 @@
 .vscode
 .babelrc
 /node_modules
-.DB_STORE
+.DS_Store
